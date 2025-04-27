@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: READING-RECORD-SERVICE
+server:
+  port: 8082
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    circuitbreakers:
+      enabled: true
+resilience4j:
+  circuitbreaker:
+    circuit-breaker-aspect-order: 1
+    instances:
+      book-service:
+        failure-rate-threshold: 50
+        automatic-transition-from-open-to-half-open-enabled: true
+        wait-duration-in-open-state: 5s
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 2
+        minimum-number-of-calls: 1
+        permitted-number-of-calls-in-half-open-state: 3
+        registerHealthIndicator: true
+        event-consumer-buffer-size: 100
+  retry:
+    retry-aspect-order: 2
+    instances:
+      book-service:
+        max-attempts: 10
+        wait-duration: 5000

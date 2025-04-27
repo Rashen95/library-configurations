@@ -1,0 +1,32 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: reading_record_service_route
+          uri: lb://READING-RECORD-SERVICE
+          predicates:
+            - Method=GET,POST,PUT,DELETE
+            - Path=/reading-record/**
+          filters:
+            - Authentication
+
+        - id: book_service_route
+          uri: lb://BOOK-SERVICE
+          predicates:
+            - Method=GET,POST,PUT,DELETE
+            - Path=/book/**
+          filters:
+            - Authentication
+
+        - id: identity_service_route
+          uri: lb://IDENTITY-SERVICE
+          predicates:
+            - Method=GET,POST,PUT,DELETE
+            - Path=/auth/**,/user/**
+jwt:
+  type: "Bearer "
+  secret: ${JWT_SECRET}
