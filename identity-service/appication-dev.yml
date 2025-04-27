@@ -1,8 +1,0 @@
-spring:
-  application:
-    name: IDENTITY-SERVICE
-server:
-  port: 8083
-jwt:
-  secret: ${JWT_SECRET}
-  lifetime: ${JWT_LIFETIME}

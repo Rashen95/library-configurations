@@ -1,5 +1,10 @@
 server:
   port: 8888
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
 spring:
   application:
     name: API-GATEWAY
@@ -27,6 +32,7 @@ spring:
           predicates:
             - Method=GET,POST,PUT,DELETE
             - Path=/auth/**,/user/**
+
 jwt:
   type: "Bearer "
   secret: ${JWT_SECRET}

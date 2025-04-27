@@ -1,8 +1,27 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+server:
+  port: 8082
+
 spring:
   application:
     name: READING-RECORD-SERVICE
-server:
-  port: 8082
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+  data:
+    jdbc:
+      dialect: postgresql
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+  flyway:
+    enabled: true
+
 management:
   endpoints:
     web:
@@ -11,6 +30,7 @@ management:
   health:
     circuitbreakers:
       enabled: true
+
 resilience4j:
   circuitbreaker:
     circuit-breaker-aspect-order: 1
