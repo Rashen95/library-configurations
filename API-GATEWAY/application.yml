@@ -33,7 +33,3 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: https://keycloak.javaguru.by/realms/aprivalov_realm/protocol/openid-connect/certs
-
-jwt:
-  type: "Bearer "
-  secret: ${JWT_SECRET}
