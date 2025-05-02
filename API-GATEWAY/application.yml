@@ -16,22 +16,23 @@ spring:
           predicates:
             - Method=GET,POST,PUT,DELETE
             - Path=/reading-record/**
-          filters:
-            - Authentication
 
         - id: book_service_route
           uri: lb://BOOK-SERVICE
           predicates:
             - Method=GET,POST,PUT,DELETE
             - Path=/book/**
-          filters:
-            - Authentication
 
         - id: identity_service_route
           uri: lb://IDENTITY-SERVICE
           predicates:
             - Method=GET,POST,PUT,DELETE
             - Path=/auth/**,/user/**
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://keycloak.javaguru.by/realms/aprivalov_realm/protocol/openid-connect/certs
 
 jwt:
   type: "Bearer "
