@@ -21,3 +21,8 @@ spring:
     password: ${DATABASE_PASSWORD}
   flyway:
     enabled: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://keycloak.javaguru.by/realms/aprivalov_realm/protocol/openid-connect/certs
