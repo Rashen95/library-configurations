@@ -26,10 +26,6 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: https://keycloak.javaguru.by/realms/aprivalov_realm/protocol/openid-connect/certs
-  cloud:
-    openfeign:
-      oauth2:
-        enabled: true
 
 management:
   endpoints:
