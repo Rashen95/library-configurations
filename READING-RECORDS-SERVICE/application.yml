@@ -6,8 +6,6 @@ server:
   port: 8082
 
 spring:
-  application:
-    name: READING-RECORD-SERVICE
   jpa:
     show-sql: true
     hibernate:
