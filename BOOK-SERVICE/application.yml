@@ -6,8 +6,6 @@ server:
   port: 8081
 
 spring:
-  application:
-    name: BOOK-SERVICE
   jpa:
     show-sql: true
     hibernate:
